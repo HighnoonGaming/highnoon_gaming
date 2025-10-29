@@ -5,7 +5,7 @@ import GalleryModal from '@/components/GalleryModal'
 function Gallery() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   return (
-    <div className="p-5">
+    <div className="p-5 overflow-hidden">
       <h2 className="uppercase text-6xl font-bold tracking-wide">Gallery</h2>
 
       <div className="hover:cursor-pointer mt-8 grid grid-cols-[repeat(auto-fill,minmax(14rem,1fr))] auto-rows-[12rem] gap-4 grid-flow-dense">
