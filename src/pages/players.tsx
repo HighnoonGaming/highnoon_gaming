@@ -6,7 +6,7 @@ function Players() {
       <div className="grid grid-cols-4 gap-6">
         {players.map((player, index) => (
           <div key={index} className="group w-full h-120 perspective-[1000px]">
-            {/* Card wrapper */}
+            {/* CARD WRAPPER */}
             <div className="relative min-w-80 w-full h-full transition-transform duration-700 transform-3d group-hover:transform-[rotateY(180deg)]">
               {/* FRONT */}
               <div className="p-5 absolute inset-0 rounded-xl overflow-hidden backface-hidden bg-darkGray border border-gray-700">
