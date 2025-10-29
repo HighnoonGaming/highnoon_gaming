@@ -4,11 +4,11 @@ import Navbar from '@/components/Navbar'
 
 export const rootRoute = createRootRoute({
   component: () => (
-    <>
+    <div className="overflow-hidden">
       <Navbar />
 
       <Outlet />
       <TanStackRouterDevtools />
-    </>
+    </div>
   ),
 })
