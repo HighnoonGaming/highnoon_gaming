@@ -77,8 +77,8 @@ function Players() {
                         value: player.tournamentWins,
                       },
                       {
-                        label: 'Leaderboard Rank',
-                        value: player.leaderboardRank,
+                        label: 'W/L',
+                        value: `${(player.wins / player.losses).toFixed(2)}%`,
                       },
                       {
                         label: 'Games',
