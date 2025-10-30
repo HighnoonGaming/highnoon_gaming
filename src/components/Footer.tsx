@@ -27,7 +27,7 @@ function Footer() {
                 key={social.name}
                 onMouseEnter={() => setHovered(social.name)}
                 onMouseLeave={() => setHovered(null)}
-                className="p-2 border rounded-md flex justify-center items-center transition-all duration-500"
+                className="p-2 border-2 text-white rounded-md flex justify-center items-center transition-all duration-500"
                 style={{
                   backgroundColor:
                     hovered === social.name ? social.color : 'transparent',

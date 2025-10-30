@@ -103,7 +103,7 @@ export const players = [
     img: playerImg,
     firstName: 'Kyle',
     lastName: 'Griffith',
-    ign: 'PixelQueen',
+    ign: 'PixelKing',
     team: 'Nexus Elite',
     games: ['Guilty Gear: Strive'],
     leaderboardRank: 8,

@@ -8,6 +8,7 @@
   --color-cinnabar-opacity-30: rgba(217, 93, 57, 0.3);
   --color-gamboge: #f0a202;
   --color-darkGray: #101828;
+  --color-amber: #f8ce19;
 
   /* Font Families */
   --font-oswald: 'Oswald', sans-serif;
@@ -15,16 +16,16 @@
 }
 
 :root {
-  --bg-color: #ffffff;
-  --text-color: #0e1428;
-  --accent-color: var(--color-cinnabar-opacity-30);
-}
-
-/* Dark theme */
-[data-theme='dark'] {
   --bg-color: var(--color-oxfordBlue);
   --text-color: #ffffff;
   --accent-color: var(--color-cinnabar);
+}
+
+/* Dark theme */
+[data-theme='light'] {
+  --bg-color: #ffffff;
+  --text-color: #0e1428;
+  --accent-color: var(--color-cinnabar-opacity-30);
 }
 
 h1,

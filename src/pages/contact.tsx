@@ -3,9 +3,9 @@ import { Angry, Smile } from 'lucide-react'
 import type { ChangeEvent, FormEvent } from 'react'
 
 type formProps = {
-  fullName: string
-  title: string
-  message: string
+  fullName?: string
+  title?: string
+  message?: string
 }
 
 function Contact({ fullName = '', title = '', message = '' }: formProps) {
