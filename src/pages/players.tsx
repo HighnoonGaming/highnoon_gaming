@@ -13,7 +13,7 @@ function Players() {
                 <div className="relative border-6 h-full rounded-xl overflow-hidden border-white">
                   <img
                     src={player.img}
-                    alt={player.firstName + player.lastName}
+                    alt="player image"
                     className="w-full h-full object-cover opacity-90"
                   />
 
@@ -29,10 +29,9 @@ function Players() {
                   </div>
 
                   <div className="absolute bottom-2 left-0 bg-white z-10 rounded-full h-35 w-35 p-3 flex items-center justify-center">
-                    <div className="rounded-full h-full w-full bg-oxfordBlue z-20 flex items-center justify-center p-3">
+                    <div className="rounded-full h-full w-full bg-oxfordBlue text-white z-20 flex items-center justify-center p-3">
                       <p className="font-semibold text-sm text-center wrap-break-word w-full">
                         {player.team}
-                        {/* {index < 9 ? `0${index + 1}` : index + 1} */}
                       </p>
                     </div>
                   </div>
@@ -57,10 +56,10 @@ function Players() {
                     <span className="flex gap-2 text-white text-sm">
                       {player.firstName} {player.lastName}
                     </span>
-                    <p className="font-medium uppercase tracking-wider text-2xl font-oswald">{`"${player.ign}"`}</p>
+                    <p className="font-medium uppercase tracking-wider text-2xl font-oswald text-white">{`"${player.ign}"`}</p>
                   </div>
 
-                  <p>{player.bio}</p>
+                  <p className="text-white">{player.bio}</p>
                 </div>
 
                 <div className="h-[55%] w-full rounded-tr-[4rem] bg-white absolute bottom-0 p-3">
@@ -78,7 +77,9 @@ function Players() {
                       },
                       {
                         label: 'W/L',
-                        value: `${(player.wins / player.losses).toFixed(2)}%`,
+                        value: `${Math.round(
+                          (player.wins / (player.wins + player.losses)) * 100,
+                        )}%`,
                       },
                       {
                         label: 'Games',
