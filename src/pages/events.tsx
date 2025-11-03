@@ -16,11 +16,11 @@ function Events() {
       {/* GRID */}
       <div className="grid grid-cols-2 gap-7">
         {/* TOP LEFT GRID */}
-        <div className="rounded-md overflow-hidden relative hover:cursor-pointer">
+        <div className="rounded-md overflow-hidden relative hover:cursor-pointer shadow-sm">
           {events.slice(0, 1).map((event, index) => (
-            <div key={index}>
+            <div key={index} className="">
               {/* IMAGE */}
-              <div className="absolute top-0 left-0 h-full w-full">
+              <div className="absolute top-0 left-0 h-full w-full overflow-hidden">
                 <img
                   src={event.img}
                   alt={event.title}
@@ -55,7 +55,7 @@ function Events() {
         {/* TOP RIGHT GRID */}
         <div className="grid grid-cols-2 grid-rows-2 gap-7">
           {events.slice(1, 5).map((event, index) => (
-            <div className="h-45 rounded-md relative overflow-hidden hover:cursor-pointer">
+            <div className="h-45 rounded-md relative overflow-hidden hover:cursor-pointer shadow-sm">
               <div key={index}>
                 {/* IMAGE */}
                 <div className="absolute top-0 left-0 h-full w-full">
@@ -96,7 +96,7 @@ function Events() {
         {/* BOTTOM LEFT GRID */}
         <div className="grid grid-cols-2 gap-7">
           {events.slice(5, 7).map((event, index) => (
-            <div className="rounded-md relative overflow-hidden hover:cursor-pointer">
+            <div className="rounded-md relative overflow-hidden hover:cursor-pointer shadow-sm">
               <div key={index}>
                 {/* IMAGE */}
                 <div className="absolute top-0 left-0 h-full w-full">
@@ -135,7 +135,7 @@ function Events() {
         </div>
 
         {/* BOTTOM RIGHT GRID */}
-        <div className="rounded-md h-80 relative overflow-hidden hover:cursor-pointer">
+        <div className="rounded-md h-80 relative overflow-hidden hover:cursor-pointer shadow-sm">
           {events.slice(7, 8).map((event, index) => (
             <div key={index}>
               {/* IMAGE */}

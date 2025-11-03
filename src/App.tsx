@@ -1,10 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
-import { ChevronLeft, ChevronRight, Play } from 'lucide-react'
+import { ChevronRight, Play } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useAppStore } from '@/store/store'
 import Footer from '@/components/Footer'
-import ThemeSwitchButton from '@/components/ThemeSwitchButton'
 import MainButton from '@/components/MainButton'
 import VideoModal from '@/components/VideoModal'
 import { ourFocusData } from '@/data/our-focus'
@@ -16,11 +14,6 @@ gsap.registerPlugin(ScrollTrigger)
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [src, setSrc] = useState<string | undefined>(undefined)
-
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const totalSlides = 5
-
-  const theme = useAppStore((s) => s.theme)
 
   const bannerRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLDivElement>(null)
@@ -121,31 +114,16 @@ function App() {
     moveAll()
   }, [])
 
-  // CAROUSEL
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? totalSlides - 3 : prev - 1))
-  }
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev === totalSlides - 3 ? 0 : prev + 1))
-  }
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index)
-  }
-
   return (
     <>
       <div className="min-h-screen relative">
-        <ThemeSwitchButton />
-
-        <div className="px-20 h-full">
+        <div className="px-3 md:px-10 lg:px-20 h-full">
           {/* BANNER & VIDEO SECTION */}
           <div className="flex flex-col min-h-[250vh] relative">
             <section
               id="banner"
               ref={bannerRef}
-              className="sticky top-0 min-h-[80vh] max-w-400 p-7 mx-auto flex justify-center items-center z-0"
+              className="sticky top-0 min-h-[80vh] lg:max-w-400 p-7 mx-auto flex justify-center items-center z-0"
             >
               <div className="text-center">
                 <div className="m-4">
@@ -155,12 +133,12 @@ function App() {
                 </div>
 
                 <div className="m-4">
-                  <h2 className="uppercase font-bold text-8xl text-center mb-0 mt-0">
+                  <h2 className="uppercase font-bold text-2xl md:text-6xl lg:text-8xl text-center mb-0 mt-0">
                     Building the future of esports & gaming
                   </h2>
                 </div>
 
-                <p className="text-center">
+                <p className="text-center not-lg:text-sm">
                   A Barbadian group focused on building the local gaming and
                   eSports community through events and organization.
                 </p>
@@ -184,16 +162,16 @@ function App() {
           </div>
 
           {/* ABOUT SECTION */}
-          <section id="about" className="mt-50 h-160 flex">
-            {/* LEFT CONTENT */}
-            <div className="w-1/2 h-full flex flex-col justify-center">
+          <section id="about" className="lg:mt-50 h-160 flex not-lg:flex-col">
+            {/* TEXT CONTENT */}
+            <div className="lg:w-1/2 h-full flex flex-col justify-center">
               <p className="uppercase">About Us</p>
 
-              <h3 className="mt-4 text-7xl font-bold uppercase">
+              <h3 className="mt-4 text-4xl md:text-7xl font-bold uppercase">
                 We are highnoon
               </h3>
 
-              <p className="mt-6 text-[17px] max-w-[85%]">
+              <p className="mt-6 text-[15px] md:text-[17px] lg:max-w-[85%]">
                 Highnoon Gaming is a Barbadian gaming group co-founded by
                 Nicholas Roach and Ricardo Knight, which began as a community
                 college project and has grown into an event organizer and
@@ -201,9 +179,9 @@ function App() {
               </p>
             </div>
 
-            {/* RIGHT CONTENT */}
-            <div className="w-1/2 h-full py-9 px-15">
-              <div className="h-full w-full flex justify-center items-center bg-cinnabar">
+            {/* VIDEO CONTENT */}
+            <div className="lg:w-1/2 h-full py-9 px-15">
+              <div className="h-full md:h-[350px] lg:h-full w-full flex justify-center items-center bg-cinnabar">
                 <button
                   onClick={() => {
                     setIsModalOpen(true)
@@ -219,12 +197,17 @@ function App() {
           </section>
 
           {/* OUR FOCUS SECTION */}
-          <section id="our-focus" className="mt-40 mb-60 h-70 flex">
-            {/* LEFT CONTENT */}
-            <div className="h-full w-[45%]">
-              <h3 className="text-7xl font-bold uppercase">Our Core Focus</h3>
+          <section
+            id="our-focus"
+            className="mt-40 mb-60 lg:h-70 flex not-lg:flex-col"
+          >
+            {/* LEFT/TOP CONTENT */}
+            <div className="h-full lg:w-[45%]">
+              <h3 className="text-4xl md:text-7xl font-bold uppercase">
+                Our Core Focus
+              </h3>
 
-              <p className="mt-3 max-w-140">
+              <p className="mt-3 text-sm md:text-[16px] lg:max-w-140">
                 We are focused on building the local gaming and eSports
                 community through organizing competitive gaming tournaments,
                 hosting weekly gaming events, like "No More Boring Sundays" and
@@ -236,11 +219,11 @@ function App() {
               </div>
             </div>
 
-            {/* RIGHT CONTENT */}
-            <div className="h-full w-[55%] grid grid-cols-2 grid-rows-2 gap-4">
+            {/* RIGHT/BOTTOM CONTENT */}
+            <div className="not-lg:mt-5 h-full lg:w-[55%] grid grid-cols-2 grid-rows-2 gap-4">
               {ourFocusData.map((focus, index) => (
                 <div key={index} className="flex flex-col">
-                  <h3 className="text-4xl uppercase font-extrabold">
+                  <h3 className="text-lg md:text-2xl lg:text-4xl uppercase font-extrabold">
                     {focus.title}
                   </h3>
 
@@ -260,7 +243,7 @@ function App() {
             <div className="flex flex-col gap-5">
               <h3 className="text-7xl font-bold uppercase">Our Team</h3>
 
-              <p className="max-w-180">
+              <p className="max-w-180 text-sm md:text-lg">
                 We are a local organization dedicated to fostering the growth of
                 the gaming community in Barbados. Our team is passionate about
                 esports and gaming, and we work tirelessly to create engaging
@@ -269,18 +252,18 @@ function App() {
             </div>
 
             {/* PARALLAX SECTION */}
-            <div className="relative min-h-[300vh] flex">
+            <div className="relative min-h-[200vh] lg:min-h-[300vh] flex">
               {/* IMAGE */}
-              <div className="sticky top-0 w-1/2 h-screen flex items-center ">
-                <div ref={imageRef} className="h-[85%] w-[95%] "></div>
+              <div className="sticky top-0 not-lg:mt-10 w-1/2 h-[50vh] lg:h-screen flex items-center justify-center">
+                <div ref={imageRef} className="h-[85%] w-[95%]"></div>
               </div>
 
-              <div className="w-1/2 flex flex-col justify-start">
+              <div className="w-1/2 flex flex-col not-lg:mt-10">
                 {ourTeamData.map((member, index) => (
                   <div
                     key={index}
                     id={`member-${index}`}
-                    className="h-screen flex flex-col justify-center pl-10"
+                    className={`h-screen flex flex-col pl-10 justify-start lg:justify-center not-lg:pt-45`}
                   >
                     {/* <div className="flex flex-col gap-2 pl-10"> */}
                     <p className="text-sm font-semibold uppercase">
@@ -313,7 +296,7 @@ function App() {
               key={index}
               className="min-w-200 h-full flex justify-center items-center"
             >
-              <p className="font-bold text-8xl font-oswald uppercase">
+              <p className="font-bold text-6xl md:text-7xl lg:text-8xl font-oswald uppercase">
                 {sponsor}
               </p>
             </div>
@@ -321,29 +304,27 @@ function App() {
         </section>
 
         {/* HIGHNOON UPDATES */}
-        <section id="updates" className="h-screen pl-20 mb-10">
-          <h3 className="text-7xl font-bold uppercase">Highnoon Updates</h3>
+        <section id="updates" className="px-5 mb-30">
+          <h3 className="text-3xl md:text-5xl lg:text-7xl font-bold uppercase">
+            Highnoon Updates
+          </h3>
 
-          <div className="flex justify-between items-center pr-20 my-2">
+          <div className="flex flex-col md:flex-row justify-between items-center pr-20 my-2">
             <p>
               Stay up to date with press release, content, team updates and
               more.
             </p>
 
-            <MainButton text="View More" onClick={() => {}} />
+            <div className="mt-4 flex self-start">
+              <MainButton text="View More" onClick={() => {}} />
+            </div>
           </div>
 
-          <div className="relative h-[70vh] mt-10 flex overflow-hidden ">
-            {Array.from({ length: totalSlides }).map((_, index) => (
-              <div
-                key={index}
-                className="flex flex-col absolute w-[25%] transition-transform duration-500"
-                style={{
-                  left: `${index * 30}%`,
-                  transform: `translateX(-${currentSlide * 120}%)`,
-                }}
-              >
-                <div className="min-h-65 min-w-95 bg-cinnabar"></div>
+          {/* GRID */}
+          <div className="w-full mt-10 gap-4 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {Array.from({ length: 6 }).map((_, index) => (
+              <div key={index} className="">
+                <div className="h-60 lg:h-100 bg-cinnabar"></div>
 
                 <div className="flex gap-5 mt-5 mb-3 items-center">
                   <span className="uppercase text-[12px] bg-gray-500 py-1 px-2 text-white">
@@ -365,47 +346,6 @@ function App() {
                 </button>
               </div>
             ))}
-          </div>
-
-          {/* NAVIGATION */}
-          <div className="controls px-20 w-full flex justify-between">
-            {/* INDICATORS */}
-            <div className="flex gap-2 items-center">
-              {Array.from({ length: 3 }).map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`h-3 w-3 rounded-full ${
-                    index === currentSlide
-                      ? theme === 'light'
-                        ? 'bg-oxfordBlue'
-                        : 'bg-white'
-                      : 'bg-gray-500'
-                  }`}
-                ></button>
-              ))}
-            </div>
-
-            {/* NAVIGATION BUTTONS */}
-            <div className="flex gap-3 items-center">
-              <button
-                onClick={prevSlide}
-                className={`p-2 rounded-full ${theme === 'light' ? 'bg-oxfordBlue' : 'bg-white'}`}
-              >
-                <ChevronLeft
-                  className={`${theme === 'dark' ? 'text-oxfordBlue' : 'text-white'}`}
-                />
-              </button>
-
-              <button
-                onClick={nextSlide}
-                className={`p-2 rounded-full ${theme === 'light' ? 'bg-oxfordBlue' : 'bg-white'}`}
-              >
-                <ChevronRight
-                  className={`${theme === 'dark' ? 'text-oxfordBlue' : 'text-white'}`}
-                />
-              </button>
-            </div>
           </div>
         </section>
 
