@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import { ChevronRight, Play } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Footer from '@/components/Footer'
 import MainButton from '@/components/MainButton'
 import VideoModal from '@/components/VideoModal'
 import { ourFocusData } from '@/data/our-focus'
@@ -151,12 +150,9 @@ function App() {
               className="h-screen w-full sticky top-[10vh] z-10 flex flex-col justify-center items-center"
             >
               <iframe
-                className="w-full h-[80vh]"
-                src="https://www.youtube.com/embed/NGlgn8E043c?si=-OmQhXg15Y7zxDvE"
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="no-referrer-when-downgrade"
+                src="https://player.twitch.tv/?channel=highnoongamingbb&parent=localhost"
                 allowFullScreen
+                className="w-full h-145 min-h-120"
               ></iframe>
             </section>
           </div>
@@ -215,7 +211,11 @@ function App() {
               </p>
 
               <div className="mt-5">
-                <MainButton text="About Us" onClick={() => {}} />
+                <MainButton
+                  text="About Us"
+                  onClick={() => {}}
+                  textSize="text-[14px]"
+                />
               </div>
             </div>
 
@@ -255,7 +255,10 @@ function App() {
             <div className="relative min-h-[200vh] lg:min-h-[300vh] flex">
               {/* IMAGE */}
               <div className="sticky top-0 not-lg:mt-10 w-1/2 h-[50vh] lg:h-screen flex items-center justify-center">
-                <div ref={imageRef} className="h-[85%] w-[95%]"></div>
+                <div
+                  ref={imageRef}
+                  className="h-[65%] w-full md:h-[85%] md:w-[95%]"
+                ></div>
               </div>
 
               <div className="w-1/2 flex flex-col not-lg:mt-10">
@@ -263,22 +266,24 @@ function App() {
                   <div
                     key={index}
                     id={`member-${index}`}
-                    className={`h-screen flex flex-col pl-10 justify-start lg:justify-center not-lg:pt-45`}
+                    className={`h-screen not-lg:gap-2 flex flex-col pl-10 justify-start lg:justify-center not-lg:pt-45`}
                   >
-                    {/* <div className="flex flex-col gap-2 pl-10"> */}
                     <p className="text-sm font-semibold uppercase">
                       {member.role}
                     </p>
 
-                    <h4 className="text-7xl font-bold uppercase">
+                    <h4 className="text-sm md:text-7xl font-bold uppercase">
                       {member.name}
                     </h4>
 
                     <div className="mt-10">
-                      <MainButton text="Learn More" onClick={() => {}} />
+                      <MainButton
+                        text="Learn More"
+                        onClick={() => {}}
+                        textSize="text-[10px]"
+                      />
                     </div>
                   </div>
-                  // </div>
                 ))}
               </div>
             </div>
@@ -297,7 +302,7 @@ function App() {
               className="min-w-200 h-full flex justify-center items-center"
             >
               <p className="font-bold text-6xl md:text-7xl lg:text-8xl font-oswald uppercase">
-                {sponsor}
+                {sponsor.name}
               </p>
             </div>
           ))}
@@ -316,7 +321,11 @@ function App() {
             </p>
 
             <div className="mt-4 flex self-start">
-              <MainButton text="View More" onClick={() => {}} />
+              <MainButton
+                text="View More"
+                onClick={() => {}}
+                textSize="text-[14px]"
+              />
             </div>
           </div>
 
@@ -348,9 +357,6 @@ function App() {
             ))}
           </div>
         </section>
-
-        {/* FOOTER */}
-        <Footer />
       </div>
 
       {isModalOpen && (

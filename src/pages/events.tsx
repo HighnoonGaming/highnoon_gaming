@@ -3,9 +3,9 @@ import { events } from '@/data/events'
 
 function Events() {
   return (
-    <div className="h-auto w-full flex flex-col gap-10 p-10">
+    <div className="h-auto w-full flex flex-col gap-10 p-4 md:p-10">
       <div className="flex justify-between items-end">
-        <h1 className="font-bold text-7xl uppercase">Events</h1>
+        <h1 className="font-bold text-5xl lg:text-7xl uppercase">Events</h1>
 
         <button className="flex gap-2">
           <Calendar width={20} height={20} />
@@ -14,9 +14,9 @@ function Events() {
       </div>
 
       {/* GRID */}
-      <div className="grid grid-cols-2 gap-7">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-7">
         {/* TOP LEFT GRID */}
-        <div className="rounded-md overflow-hidden relative hover:cursor-pointer shadow-sm">
+        <div className="rounded-md h-80 lg:h-full overflow-hidden relative hover:cursor-pointer shadow-sm">
           {events.slice(0, 1).map((event, index) => (
             <div key={index} className="">
               {/* IMAGE */}
@@ -43,7 +43,7 @@ function Events() {
 
                 {/* DATE */}
                 <div className="bg-cinnabar flex grow items-center justify-center">
-                  <p className="max-w-10 text-center uppercase font-bold text-md font-oswald">
+                  <p className="max-w-20 lg:max-w-10 text-center uppercase font-bold text-md font-oswald">
                     {event.date}
                   </p>
                 </div>
@@ -53,10 +53,13 @@ function Events() {
         </div>
 
         {/* TOP RIGHT GRID */}
-        <div className="grid grid-cols-2 grid-rows-2 gap-7">
+        <div className="grid md:grid-cols-2 lg:grid-rows-2 gap-7">
           {events.slice(1, 5).map((event, index) => (
-            <div className="h-45 rounded-md relative overflow-hidden hover:cursor-pointer shadow-sm">
-              <div key={index}>
+            <div
+              key={index}
+              className="h-45 rounded-md relative overflow-hidden hover:cursor-pointer shadow-sm"
+            >
+              <div>
                 {/* IMAGE */}
                 <div className="absolute top-0 left-0 h-full w-full">
                   <img
@@ -94,10 +97,13 @@ function Events() {
         </div>
 
         {/* BOTTOM LEFT GRID */}
-        <div className="grid grid-cols-2 gap-7">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
           {events.slice(5, 7).map((event, index) => (
-            <div className="rounded-md relative overflow-hidden hover:cursor-pointer shadow-sm">
-              <div key={index}>
+            <div
+              key={index}
+              className="rounded-md h-50 lg:h-auto relative overflow-hidden hover:cursor-pointer shadow-sm"
+            >
+              <div>
                 {/* IMAGE */}
                 <div className="absolute top-0 left-0 h-full w-full">
                   <img

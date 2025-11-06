@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { ChevronsUpDown, Search } from 'lucide-react'
+import { ChevronsUpDown } from 'lucide-react'
 import { leaderboards } from '@/data/leaderboard'
+import SearchBar from '@/hooks/searchBar'
 
 function Leaderboards() {
   const [activeTab, setActiveTab] =
@@ -12,10 +13,10 @@ function Leaderboards() {
   }
 
   return (
-    <div className="p-10">
+    <div className="overflow-hidden p-2 lg:p-10 ">
       <div className="grid grid-cols-[18%_auto] auto-rows-auto gap-4">
-        {/* LEFT SIDEBAR */}
-        <div className="border-[.01rem] border-white/20 shadow-2xl rounded-xl row-span-8 overflow-y-auto">
+        {/* LEFT SIDEBAR  */}
+        <div className="hidden lg:block border-[.01rem] border-white/20 shadow-2xl rounded-xl w-full col-span-1 row-span-8 overflow-y-auto">
           {/* LOGO */}
           <div className="border-b border-white/20 shadow-2xs h-30 flex items-center justify-center">
             <h1 className="uppercase text-center leading-tight">
@@ -40,21 +41,38 @@ function Leaderboards() {
           </div>
         </div>
 
-        {/* RIGHT TOP */}
-        <div className="rounded-lg p-4 flex items-center gap-2">
-          <input
-            type="text"
-            placeholder="Search player..."
-            className="bg-transparent border border-white/30 shadow-sm rounded-lg px-3 py-2 text-sm focus:outline-none w-full"
-          />
-          <button className="px-3 py-2 bg-cinnabar rounded-lg text-sm font-semibold text-white hover:bg-cinnabar/80 transition duration-300">
-            <Search className="w-5 h-5" />
-          </button>
+        {/* TOP */}
+        <div className="lg:hidden m-2 col-span-2  border-[.01rem] border-white/20 p-1 rounded-lg">
+          <select
+            name="game"
+            className="outline-0 w-full p-2"
+            value={activeTab}
+            onChange={(e) =>
+              handleActiveTab(e.target.value as keyof typeof leaderboards)
+            }
+          >
+            {Object.keys(leaderboards).map((leaderboard) => (
+              <option
+                value={leaderboard}
+                key={leaderboard}
+                onChange={() =>
+                  handleActiveTab(leaderboard as keyof typeof leaderboards)
+                }
+              >
+                {leaderboard}
+              </option>
+            ))}
+          </select>
         </div>
 
-        {/* RIGHT BOTTOM */}
-        <div className="rounded-lg p-4 flex flex-col gap-5">
-          <p className="font-oswald font-bold text-xl tracking-wide uppercase">
+        {/* RIGHT TOP | MIDDLE */}
+        <div className="col-span-2 lg:col-span-1">
+          <SearchBar placeholder="Search Player..." padding="p-4" />
+        </div>
+
+        {/* RIGHT BOTTOM | BOTTOM */}
+        <div className="rounded-lg md:p-4 md:mx-4 lg:mx-0 flex flex-col gap-5 col-span-2 lg:w-full lg:col-span-1 ">
+          <p className="font-oswald font-bold text-xl tracking-wide uppercase p-2">
             Leaderboard : {activeTab}
           </p>
 
@@ -65,10 +83,10 @@ function Leaderboards() {
               (label, i) => (
                 <button
                   key={i}
-                  className="flex items-center justify-center gap-1 bg-darkGray text-white font-semibold py-2 border-b shadow-xs border-white/10"
+                  className="flex items-center justify-center gap-1 bg-darkGray text-[10px] lg:text-sm text-white font-semibold py-2 border-b shadow-xs border-white/10"
                 >
                   {label}
-                  <ChevronsUpDown className="h-3.5 w-3.5" />
+                  <ChevronsUpDown className="h-2 w-2 md:h-3.5 md:w-3.5" />
                 </button>
               ),
             )}
@@ -89,7 +107,7 @@ function Leaderboards() {
               ].map((label, i) => (
                 <div
                   key={i}
-                  className={`flex items-center justify-center py-2 border-b border-white/10 ${i === 0 && player.rank === 1 ? 'text-cinnabar font-bold' : ''}`}
+                  className={`flex items-center justify-center py-2 border-b border-white/10 text-[10px] lg:text-sm ${i === 0 && player.rank === 1 ? 'text-cinnabar font-bold' : ''}`}
                 >
                   {label === player.winRate
                     ? `${label}%`

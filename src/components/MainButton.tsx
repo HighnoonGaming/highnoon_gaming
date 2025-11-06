@@ -3,9 +3,10 @@ import { useAppStore } from '@/store/store'
 export interface MainButtonProps {
   text: string
   onClick: () => void
+  textSize?: string
 }
 
-function MainButton({ text, onClick }: MainButtonProps) {
+function MainButton({ text, onClick, textSize }: MainButtonProps) {
   const theme = useAppStore((s) => s.theme)
 
   return (
@@ -18,7 +19,7 @@ function MainButton({ text, onClick }: MainButtonProps) {
       ></div>
 
       <span
-        className={`relative z-10 uppercase text-[14px] transition-colors duration-700 ease-in-out ${theme === 'light' ? 'group-hover:text-white' : 'group-hover:text-oxfordBlue'}`}
+        className={`relative z-10 uppercase ${textSize} transition-colors duration-700 ease-in-out ${theme === 'light' ? 'group-hover:text-white' : 'group-hover:text-oxfordBlue'}`}
       >
         {text}
       </span>

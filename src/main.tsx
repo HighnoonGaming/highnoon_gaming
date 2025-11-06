@@ -12,8 +12,9 @@ import { contactRoute } from '@/routes/contact.tsx'
 import { eventsRoute } from '@/routes/events.tsx'
 import { galleryRoute } from '@/routes/gallery.tsx'
 import { leaderboardsRoute } from '@/routes/leaderboards.tsx'
-import { liveRoute } from '@/routes/live.tsx'
+import { partnersRoute } from '@/routes/partners.tsx'
 import { playersRoute } from '@/routes/players.tsx'
+import { becomeAPartnerRoute } from '@/routes/become-a-partner.tsx'
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
@@ -22,8 +23,9 @@ const routeTree = rootRoute.addChildren([
   eventsRoute,
   galleryRoute,
   leaderboardsRoute,
-  liveRoute,
+  partnersRoute,
   playersRoute,
+  becomeAPartnerRoute,
 ])
 
 const savedTheme = localStorage.getItem('app-storage')

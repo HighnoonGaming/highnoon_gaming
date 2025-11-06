@@ -8,7 +8,7 @@ function Footer() {
   const [hovered, setHovered] = useState<string | null>(null)
   return (
     <div
-      className={`h-[80vh] md:h-[60vh] w-full flex flex-col gap-5 p-5 md:p-15 bg-cinnabar overflow-hidden`}
+      className={`h-screen md:h-[60vh] w-full flex flex-col gap-5 p-5 md:p-15 bg-cinnabar overflow-hidden`}
     >
       {/* TOP */}
       <div className="flex flex-col lg:flex-row gap-10 lg:gap-30 h-full">
@@ -49,7 +49,7 @@ function Footer() {
               <Link
                 key={link.name}
                 to={link.href}
-                className="uppercase text-[13px] font-medium"
+                className="uppercase text-[13px] h-fit font-medium"
               >
                 {link.name}
               </Link>
@@ -63,16 +63,16 @@ function Footer() {
 
           <div className="flex flex-col gap-3">
             {contactInfo.map((info) => (
-              <span className="flex gap-5 items-center">
+              <div key={info.value} className="flex gap-5 items-center">
                 {<info.icon width={16} height={16} />}
                 <p>{info.value}</p>
-              </span>
+              </div>
             ))}
           </div>
         </div>
       </div>
 
-      <div className="gap-2 md:gap-0 flex flex-col md:flex-row justify-between mt-5 border-t py-5 items-center">
+      <div className="gap-2 md:gap-0 flex flex-col md:flex-row justify-between mt-5 border-t py-5 md:items-center">
         <p>© 2025 Highnoon Gaming. All rights reserved.</p>
 
         <div className="flex gap-4 lg:gap-7">

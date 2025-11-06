@@ -26,16 +26,21 @@ function Contact({ fullName = '', title = '', message = '' }: formProps) {
     e.preventDefault()
 
     console.log('Form submitted:', formData)
+    setFormData({
+      fullName: '',
+      title: '',
+      message: '',
+    })
   }
 
   return (
-    <div className="p-2 flex items-center justify-center h-[calc(100vh-80px)] w-full">
+    <div className="p-10 lg:p-2 flex flex-col lg:flex-row items-center justify-center h-[calc(100vh-80px)] w-full">
       {/* LOGO */}
-      <div className="h-[90%] w-1/3 bg-oxfordBlue shadow-[0_4px_16px_rgba(0,0,0,0.4)] border border-transparent rounded-l-lg flex flex-col gap-2 items-center justify-center">
-        <p className="uppercase font-oswald text-7xl text-white font-bold">
+      <div className="h-30 md:h-[40%] lg:h-[90%] w-full lg:w-1/3 bg-oxfordBlue shadow-[0_4px_16px_rgba(0,0,0,0.4)] border border-transparent rounded-t-lg lg:rounded-l-lg flex flex-col gap-2 items-center justify-center">
+        <p className="uppercase font-oswald text-2xl md:text-7xl text-white font-bold">
           Highnoon
         </p>
-        <p className="uppercase font-oswald text-5xl text-white font-bold tracking-widest">
+        <p className="uppercase font-oswald md:text-5xl text-white font-bold tracking-widest">
           Gaming
         </p>
       </div>
@@ -45,10 +50,10 @@ function Contact({ fullName = '', title = '', message = '' }: formProps) {
         action={''}
         method=""
         onSubmit={handleSubmit}
-        className={`h-[90%] w-1/3 rounded-r-lg flex flex-col p-5 gap-5 bg-cinnabar`}
+        className={`not-lg:grow lg:h-[90%] w-full lg:w-1/3 rounded-b-lg lg:rounded-r-lg flex flex-col p-5 gap-5 bg-cinnabar`}
       >
         {/* NAME */}
-        <div className="relative">
+        <div className="relative z-10">
           <p className="uppercase text-sm">Name:</p>
           <input
             type="text"
@@ -63,15 +68,15 @@ function Contact({ fullName = '', title = '', message = '' }: formProps) {
             {formData.fullName.length === 0 ? (
               ''
             ) : formData.fullName.length > 0 && formData.fullName.length < 5 ? (
-              <Angry color="red" className="h-8 w-8" />
+              <Angry className="h-8 w-8 text-oxfordBlue" />
             ) : (
-              <Smile color="green" className="h-8 w-8" />
+              <Smile className="h-8 w-8 text-green-500" />
             )}
           </div>
         </div>
 
         {/* TITLE */}
-        <div className="relative">
+        <div className="relative z-10">
           <p className="uppercase text-sm">Title:</p>
           <input
             type="text"
@@ -86,15 +91,15 @@ function Contact({ fullName = '', title = '', message = '' }: formProps) {
             {formData.title.length === 0 ? (
               ''
             ) : formData.title.length > 0 && formData.title.length < 5 ? (
-              <Angry color="red" className="h-8 w-8" />
+              <Angry className="h-8 w-8 text-oxfordBlue" />
             ) : (
-              <Smile color="green" className="h-8 w-8" />
+              <Smile className="h-8 w-8 text-green-500" />
             )}
           </div>
         </div>
 
         {/* MESSAGE */}
-        <div className="relative">
+        <div className="relative z-10">
           <p className="uppercase text-sm">Message:</p>
           <textarea
             name="message"
@@ -108,9 +113,9 @@ function Contact({ fullName = '', title = '', message = '' }: formProps) {
             {formData.message.length === 0 ? (
               ''
             ) : formData.message.length > 0 && formData.message.length < 10 ? (
-              <Angry color="red" className="h-8 w-8" />
+              <Angry className="h-8 w-8 text-oxfordBlue" />
             ) : (
-              <Smile color="green" className="h-8 w-8" />
+              <Smile className="h-8 w-8 text-green-500" />
             )}
           </div>
         </div>

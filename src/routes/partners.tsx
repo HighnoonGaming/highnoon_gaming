@@ -1,9 +1,9 @@
 import { createRoute } from '@tanstack/react-router'
 import { rootRoute } from './__root'
-import Live from '@/pages/live'
+import Partners from '@/pages/partners'
 
-export const liveRoute = createRoute({
+export const partnersRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: 'live',
-  component: Live,
+  path: 'partners',
+  component: Partners,
 })

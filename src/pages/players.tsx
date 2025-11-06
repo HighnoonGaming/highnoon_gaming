@@ -1,11 +1,16 @@
 import { players } from '@/data/players'
+import SearchBar from '@/hooks/searchBar'
 
 function Players() {
   return (
-    <div className="py-10 px-20 ">
-      <div className="grid grid-cols-4 gap-6">
+    <div className="py-10 px-5 lg:px-20">
+      {/* SEARCH */}
+      <SearchBar placeholder="Search Player..." padding="py-4" />
+
+      {/* GRID */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {players.map((player, index) => (
-          <div key={index} className="group w-full h-120 perspective-[1000px]">
+          <div key={index} className="group h-120 perspective-[1000px]">
             {/* CARD WRAPPER */}
             <div className="relative min-w-80 w-full h-full transition-transform duration-700 transform-3d group-hover:transform-[rotateY(180deg)]">
               {/* FRONT */}
