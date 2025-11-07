@@ -113,6 +113,11 @@ function App() {
     moveAll()
   }, [])
 
+  const http =
+    process.env.NODE_ENV === 'production'
+      ? 'https://highnoongaming.vercel.app/'
+      : 'localhost'
+
   return (
     <>
       <div className="min-h-screen relative">
@@ -150,7 +155,7 @@ function App() {
               className="h-screen w-full sticky top-[10vh] z-10 flex flex-col justify-center items-center"
             >
               <iframe
-                src="https://player.twitch.tv/?channel=highnoongamingbb&parent=localhost"
+                src={`https://player.twitch.tv/?channel=highnoongamingbb&parent=${http}`}
                 allowFullScreen
                 className="w-full h-145 min-h-120"
               ></iframe>
