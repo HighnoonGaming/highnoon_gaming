@@ -113,8 +113,8 @@ function App() {
     moveAll()
   }, [])
 
-  const base =
-    process.env.BASE_ENV === 'production'
+  const PARENT_DOMAIN =
+    import.meta.env.MODE === 'production'
       ? 'highnoon-gaming.vercel.app'
       : 'localhost'
 
@@ -155,7 +155,7 @@ function App() {
               className="h-screen w-full sticky top-[10vh] z-10 flex flex-col justify-center items-center"
             >
               <iframe
-                src={`https://player.twitch.tv/?channel=highnoongamingbb&parent=${base}`}
+                src={`https://player.twitch.tv/?channel=highnoongamingbb&parent=${PARENT_DOMAIN}`}
                 allowFullScreen
                 className="w-full h-145 min-h-120"
               ></iframe>
