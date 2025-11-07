@@ -9,10 +9,10 @@ export interface ThemeSlice {
 }
 
 export const createThemeSlice: StateCreator<ThemeSlice> = (set, get) => ({
-  theme: 'light',
+  theme: 'dark',
 
   toggleTheme: () => {
-    const newTheme = get().theme === 'light' ? 'dark' : 'light'
+    const newTheme = get().theme === 'dark' ? 'light' : 'dark'
     document.documentElement.setAttribute('data-theme', newTheme)
     set({ theme: newTheme })
   },
