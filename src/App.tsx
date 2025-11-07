@@ -115,7 +115,7 @@ function App() {
 
   const base =
     process.env.BASE_ENV === 'production'
-      ? 'https://highnoongaming.vercel.app/'
+      ? 'https://highnoon-gaming.vercel.app/'
       : 'localhost'
 
   return (
