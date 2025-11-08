@@ -309,14 +309,14 @@ function App() {
                       <img
                         src={flags.barbados}
                         alt="flag of barbados"
-                        className="h-20 md:h-full w-full md:w-fit object-cover"
+                        className="h-20 md:h-full w-full md:w-fit lg:h-15 object-cover"
                       />
 
                       {member.id === '1477' && (
                         <img
                           src={flags.canada}
                           alt="flag of canada"
-                          className="h-20 md:h-full w-full md:w-fit object-cover"
+                          className="h-20 md:h-full w-full md:w-fit lg:h-15 object-cover"
                         />
                       )}
                     </div>
@@ -325,12 +325,12 @@ function App() {
                       <Link
                         to="/team/$memberId"
                         params={{ memberId: member.id }}
-                        className="flex gap-2 items-center"
+                        className="flex gap-2 items-center group"
                       >
                         <span className="md:text-2xl font-bold uppercase">
                           Profile
                         </span>
-                        <ChevronsRight className="md:h-8 md:w-8" />
+                        <ChevronsRight className="md:h-8 md:w-8 animate-chevron" />
                       </Link>
                     </div>
                   </div>
