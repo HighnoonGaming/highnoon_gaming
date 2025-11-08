@@ -1,15 +1,33 @@
+import { useState } from 'react'
 import { players } from '@/data/players'
 import SearchBar from '@/hooks/searchBar'
 
 function Players() {
+  const [searchedPlayer, setSearchedPlayer] = useState('')
+
+  const searchPlayerName = (name: string) => {
+    setSearchedPlayer(name)
+  }
+
+  const filterPlayers = players.filter((player) =>
+    `${player.firstName} ${player.lastName}`
+      .toLowerCase()
+      .includes(searchedPlayer.toLowerCase()),
+  )
+
   return (
     <div className="py-10 px-5 lg:px-20">
       {/* SEARCH */}
-      <SearchBar placeholder="Search Player..." padding="py-4" />
+      <SearchBar
+        placeholder="Search Player..."
+        padding="py-4"
+        value={searchedPlayer}
+        onChange={(e) => searchPlayerName(e.target.value)}
+      />
 
       {/* GRID */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {players.map((player, index) => (
+        {filterPlayers.map((player, index) => (
           <div key={index} className="group h-120 perspective-[1000px]">
             {/* CARD WRAPPER */}
             <div className="relative min-w-80 w-full h-full transition-transform duration-700 transform-3d group-hover:transform-[rotateY(180deg)]">

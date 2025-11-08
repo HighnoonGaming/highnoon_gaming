@@ -67,7 +67,11 @@ function Leaderboards() {
 
         {/* RIGHT TOP | MIDDLE */}
         <div className="col-span-2 lg:col-span-1">
-          <SearchBar placeholder="Search Player..." padding="p-4" />
+          <SearchBar
+            showIcon={true}
+            placeholder="Search Player..."
+            padding="p-4"
+          />
         </div>
 
         {/* RIGHT BOTTOM | BOTTOM */}

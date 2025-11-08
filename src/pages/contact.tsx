@@ -5,13 +5,20 @@ import type { ChangeEvent, FormEvent } from 'react'
 type formProps = {
   fullName?: string
   title?: string
+  agency?: string
   message?: string
 }
 
-function Contact({ fullName = '', title = '', message = '' }: formProps) {
+function Contact({
+  fullName = '',
+  title = '',
+  agency = '',
+  message = '',
+}: formProps) {
   const [formData, setFormData] = useState({
     fullName,
     title,
+    agency,
     message,
   })
 
@@ -29,14 +36,15 @@ function Contact({ fullName = '', title = '', message = '' }: formProps) {
     setFormData({
       fullName: '',
       title: '',
+      agency: '',
       message: '',
     })
   }
 
   return (
-    <div className="p-10 lg:p-2 flex flex-col lg:flex-row items-center justify-center h-[calc(100vh-80px)] w-full">
+    <div className="p-10 lg:p-8 flex flex-col lg:flex-row items-center justify-center w-full lg:h-[calc(100vh-28px)]">
       {/* LOGO */}
-      <div className="h-30 md:h-[40%] lg:h-[90%] w-full lg:w-1/3 bg-oxfordBlue shadow-[0_4px_16px_rgba(0,0,0,0.4)] border border-transparent rounded-t-lg lg:rounded-l-lg flex flex-col gap-2 items-center justify-center">
+      <div className="h-30 md:h-60 lg:h-[90%] w-full lg:w-1/3 bg-oxfordBlue shadow-[0_4px_16px_rgba(0,0,0,0.4)] border border-transparent rounded-t-lg lg:rounded-l-lg flex flex-col gap-2 items-center justify-center">
         <p className="uppercase font-oswald text-2xl md:text-7xl text-white font-bold">
           Highnoon
         </p>
@@ -50,18 +58,20 @@ function Contact({ fullName = '', title = '', message = '' }: formProps) {
         action={''}
         method=""
         onSubmit={handleSubmit}
-        className={`not-lg:grow lg:h-[90%] w-full lg:w-1/3 rounded-b-lg lg:rounded-r-lg flex flex-col p-5 gap-5 bg-cinnabar`}
+        className={`not-lg:grow w-full lg:h-[90%] lg:w-1/3 rounded-b-lg lg:rounded-bl-none lg:rounded-r-lg flex flex-col p-5 gap-5 bg-cinnabar`}
       >
         {/* NAME */}
         <div className="relative z-10">
-          <p className="uppercase text-sm">Name:</p>
+          <p className="">Name:</p>
           <input
             type="text"
             name="fullName"
             className={`w-full h-12 rounded-lg pl-2 outline-0 mt-2 bg-white text-oxfordBlue`}
             value={formData.fullName}
             onChange={handleChange}
+            required
           />
+
           <div
             className={`-z-10 absolute right-2 transition-all duration-500 ease-in-out ${formData.fullName.length > 0 ? 'top-1 opacity-100' : 'top-10 opacity-0'}`}
           >
@@ -77,13 +87,14 @@ function Contact({ fullName = '', title = '', message = '' }: formProps) {
 
         {/* TITLE */}
         <div className="relative z-10">
-          <p className="uppercase text-sm">Title:</p>
+          <p className="">Title:</p>
           <input
             type="text"
             name="title"
             className={`w-full h-12 rounded-lg pl-2 outline-0 mt-2 bg-white text-oxfordBlue`}
             value={formData.title}
             onChange={handleChange}
+            required
           />
           <div
             className={`-z-10 absolute right-2 transition-all duration-500 ease-in-out ${formData.fullName.length > 0 ? 'top-1 opacity-100' : 'top-10 opacity-0'}`}
@@ -98,14 +109,39 @@ function Contact({ fullName = '', title = '', message = '' }: formProps) {
           </div>
         </div>
 
+        {/* AGENCY */}
+        <div className="relative z-10">
+          <p className="">Agency (If Applicable):</p>
+          <input
+            type="text"
+            name="agency"
+            className={`w-full h-12 rounded-lg pl-2 outline-0 mt-2 bg-white text-oxfordBlue`}
+            value={formData.agency}
+            onChange={handleChange}
+          />
+
+          <div
+            className={`-z-10 absolute right-2 transition-all duration-500 ease-in-out ${formData.agency.length > 0 ? 'top-1 opacity-100' : 'top-10 opacity-0'}`}
+          >
+            {formData.agency.length === 0 ? (
+              ''
+            ) : formData.agency.length > 0 && formData.agency.length < 5 ? (
+              <Angry className="h-8 w-8 text-oxfordBlue" />
+            ) : (
+              <Smile className="h-8 w-8 text-green-500" />
+            )}
+          </div>
+        </div>
+
         {/* MESSAGE */}
         <div className="relative z-10">
-          <p className="uppercase text-sm">Message:</p>
+          <p className="">Message:</p>
           <textarea
             name="message"
             className={`w-full min-h-32 max-h-60 resize-none rounded-lg pl-2 pt-2 outline-0 mt-2 bg-white text-oxfordBlue`}
             value={formData.message}
             onChange={handleChange}
+            required
           />
           <div
             className={`-z-10 absolute right-2 transition-all duration-500 ease-in-out ${formData.message.length > 0 ? 'top-1 opacity-100' : 'top-10 opacity-0'}`}
