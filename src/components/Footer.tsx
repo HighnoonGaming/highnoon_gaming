@@ -25,8 +25,10 @@ function Footer() {
 
           <div className="flex gap-5 items-center">
             {socials.map((social) => (
-              <button
+              <a
                 key={social.name}
+                href={social.link}
+                target="_blank"
                 onMouseEnter={() => setHovered(social.name)}
                 onMouseLeave={() => setHovered(null)}
                 className="p-2 border-2 text-white rounded-md flex justify-center items-center transition-all duration-500"
@@ -37,7 +39,7 @@ function Footer() {
                 }}
               >
                 <Icon icon={social.icon} width={18} height={18} />
-              </button>
+              </a>
             ))}
           </div>
         </div>

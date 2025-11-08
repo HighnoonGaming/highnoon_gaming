@@ -1,5 +1,6 @@
+import { Link } from '@tanstack/react-router'
 import { useEffect, useRef, useState } from 'react'
-import { ChevronRight, Play } from 'lucide-react'
+import { ChevronRight, ChevronsRight, Play } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import MainButton from '@/components/MainButton'
@@ -7,6 +8,7 @@ import VideoModal from '@/components/VideoModal'
 import { ourFocusData } from '@/data/our-focus'
 import { ourTeamData } from '@/data/our-team'
 import { sponsors } from '@/data/sponsors'
+import { useFlags } from '@/hooks/useFlag'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -20,7 +22,10 @@ function App() {
   const imageRef = useRef<HTMLDivElement>(null)
   const sponsorRef = useRef<HTMLDivElement>(null)
 
+  const flags = useFlags()
+
   // GSAP
+  // BANNER
   useEffect(() => {
     if (!bannerRef.current) return
 
@@ -41,6 +46,7 @@ function App() {
     })
   }, [])
 
+  // VIDEO
   useEffect(() => {
     if (!bannerRef.current || !videoRef.current) return
 
@@ -55,6 +61,7 @@ function App() {
     })
   }, [])
 
+  // OUR TEAM
   useEffect(() => {
     const ctx = gsap.context(() => {
       ourTeamData.forEach((member, index) => {
@@ -64,16 +71,32 @@ function App() {
           trigger,
           start: 'top center',
           end: 'bottom center',
-          onEnter: () =>
+          onEnter: () => {
             gsap.to(imageRef.current, {
-              backgroundColor: member.color,
-              duration: 0.8,
-            }),
-          onEnterBack: () =>
+              backgroundImage: `url(${member.img})`,
+              backgroundRepeat: 'none',
+              backgroundSize: 'cover',
+              duration: 0.5,
+            })
+            gsap.fromTo(
+              imageRef.current,
+              { opacity: 0 },
+              { opacity: 1, duration: 1, ease: 'power1.inOut' },
+            )
+          },
+          onEnterBack: () => {
             gsap.to(imageRef.current, {
-              backgroundColor: member.color,
-              duration: 0.8,
-            }),
+              backgroundImage: `url(${member.img})`,
+              backgroundRepeat: 'none',
+              backgroundSize: 'cover',
+              duration: 0.5,
+            })
+            gsap.fromTo(
+              imageRef.current,
+              { opacity: 0 },
+              { opacity: 1, duration: 1, ease: 'power1.inOut' },
+            )
+          },
         })
       })
     }, ourTeamRef)
@@ -81,6 +104,7 @@ function App() {
     return () => ctx.revert()
   }, [])
 
+  // SPONSORS
   useEffect(() => {
     if (!sponsorRef.current) return
 
@@ -218,7 +242,7 @@ function App() {
               <div className="mt-5">
                 <MainButton
                   text="About Us"
-                  onClick={() => {}}
+                  link="/about"
                   textSize="text-[14px]"
                 />
               </div>
@@ -262,7 +286,7 @@ function App() {
               <div className="sticky top-0 not-lg:mt-10 w-1/2 h-[50vh] lg:h-screen flex items-center justify-center">
                 <div
                   ref={imageRef}
-                  className="h-[65%] w-full md:h-[85%] md:w-[95%]"
+                  className="h-[65%] w-full md:h-[85%] md:w-[95%] grayscale-100 hover:grayscale-0 transition duration-500 rounded-2xl"
                 ></div>
               </div>
 
@@ -281,12 +305,33 @@ function App() {
                       {member.name}
                     </h4>
 
-                    <div className="mt-10">
-                      <MainButton
-                        text="Learn More"
-                        onClick={() => {}}
-                        textSize="text-[10px]"
+                    <div className="md:h-20 mt-5 lg:mt-7 flex flex-col md:flex-row gap-2 lg:gap-4">
+                      <img
+                        src={flags.barbados}
+                        alt="flag of barbados"
+                        className="h-20 md:h-full w-full md:w-fit object-cover"
                       />
+
+                      {member.id === '1477' && (
+                        <img
+                          src={flags.canada}
+                          alt="flag of canada"
+                          className="h-20 md:h-full w-full md:w-fit object-cover"
+                        />
+                      )}
+                    </div>
+
+                    <div className="mt-5 lg:mt-10">
+                      <Link
+                        to="/team/$memberId"
+                        params={{ memberId: member.id }}
+                        className="flex gap-2 items-center"
+                      >
+                        <span className="md:text-2xl font-bold uppercase">
+                          Profile
+                        </span>
+                        <ChevronsRight className="md:h-8 md:w-8" />
+                      </Link>
                     </div>
                   </div>
                 ))}
@@ -326,11 +371,7 @@ function App() {
             </p>
 
             <div className="mt-4 flex self-start">
-              <MainButton
-                text="View More"
-                onClick={() => {}}
-                textSize="text-[14px]"
-              />
+              <MainButton text="View More" link="" textSize="text-[14px]" />
             </div>
           </div>
 
@@ -338,7 +379,7 @@ function App() {
           <div className="w-full mt-10 gap-4 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {Array.from({ length: 6 }).map((_, index) => (
               <div key={index} className="">
-                <div className="h-60 lg:h-100 bg-cinnabar"></div>
+                <div className="h-60 lg:h-80 lg:w-[85%] bg-cinnabar rounded-2xl"></div>
 
                 <div className="flex gap-5 mt-5 mb-3 items-center">
                   <span className="uppercase text-[12px] bg-gray-500 py-1 px-2 text-white">

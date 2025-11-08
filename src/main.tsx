@@ -5,16 +5,18 @@ import { RouterProvider, createRouter } from '@tanstack/react-router'
 import './styles.css'
 import reportWebVitals from './reportWebVitals.ts'
 
-import { rootRoute } from '@/routes/__root.tsx'
-import { indexRoute } from '@/routes/index.tsx'
-import { aboutRoute } from '@/routes/about.tsx'
-import { contactRoute } from '@/routes/contact.tsx'
-import { eventsRoute } from '@/routes/events.tsx'
-import { galleryRoute } from '@/routes/gallery.tsx'
-import { leaderboardsRoute } from '@/routes/leaderboards.tsx'
-import { partnersRoute } from '@/routes/partners.tsx'
-import { playersRoute } from '@/routes/players.tsx'
-import { becomeAPartnerRoute } from '@/routes/become-a-partner.tsx'
+import { rootRoute } from './routes/__root.tsx'
+import { indexRoute } from './routes/index.tsx'
+import { aboutRoute } from './routes/about.tsx'
+import { contactRoute } from './routes/contact.tsx'
+import { eventsRoute } from './routes/events.tsx'
+import { galleryRoute } from './routes/gallery.tsx'
+import { leaderboardsRoute } from './routes/leaderboards.tsx'
+import { partnersRoute } from './routes/partners.tsx'
+import { playersRoute } from './routes/players.tsx'
+import { becomeAPartnerRoute } from './routes/become-a-partner.tsx'
+import { teamRoute } from './routes/team/team.tsx'
+import { memberRoute } from './routes/team/$memberId.tsx'
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
@@ -26,6 +28,7 @@ const routeTree = rootRoute.addChildren([
   partnersRoute,
   playersRoute,
   becomeAPartnerRoute,
+  teamRoute.addChildren([memberRoute]),
 ])
 
 const savedTheme = localStorage.getItem('app-storage')

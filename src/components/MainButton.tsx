@@ -1,21 +1,22 @@
+import { Link } from '@tanstack/react-router'
 import { useAppStore } from '@/store/store'
 
 export interface MainButtonProps {
   text: string
-  onClick: () => void
   textSize?: string
+  link?: string
 }
 
-function MainButton({ text, onClick, textSize }: MainButtonProps) {
+function MainButton({ text, textSize, link }: MainButtonProps) {
   const theme = useAppStore((s) => s.theme)
 
   return (
-    <button
-      onClick={onClick}
-      className="relative px-6 py-3 border rounded-4xl overflow-hidden group self-start"
+    <Link
+      to={link}
+      className="inline-block relative px-6 py-3 border rounded-4xl overflow-hidden group self-start"
     >
       <div
-        className={`backdrop absolute inset-0 ${theme === 'light' ? 'bg-oxfordBlue' : 'bg-white'} w-0 transition-all duration-700 ease-in-out group-hover:w-full`}
+        className={`backdrop absolute inset-0 ${theme === 'light' ? 'bg-oxfordBlue' : 'bg-white'} w-0 transition-all duration-400 ease-in-out group-hover:w-full`}
       ></div>
 
       <span
@@ -23,7 +24,7 @@ function MainButton({ text, onClick, textSize }: MainButtonProps) {
       >
         {text}
       </span>
-    </button>
+    </Link>
   )
 }
 
