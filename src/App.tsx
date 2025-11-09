@@ -76,26 +76,18 @@ function App() {
               backgroundImage: `url(${member.img})`,
               backgroundRepeat: 'none',
               backgroundSize: 'cover',
-              duration: 0.5,
+              duration: 0,
+              ease: 'power2.inOut',
             })
-            gsap.fromTo(
-              imageRef.current,
-              { opacity: 0 },
-              { opacity: 1, duration: 1, ease: 'power1.inOut' },
-            )
           },
           onEnterBack: () => {
             gsap.to(imageRef.current, {
               backgroundImage: `url(${member.img})`,
               backgroundRepeat: 'none',
               backgroundSize: 'cover',
-              duration: 0.5,
+              duration: 0,
+              ease: 'power2.inOut',
             })
-            gsap.fromTo(
-              imageRef.current,
-              { opacity: 0 },
-              { opacity: 1, duration: 1, ease: 'power1.inOut' },
-            )
           },
         })
       })
