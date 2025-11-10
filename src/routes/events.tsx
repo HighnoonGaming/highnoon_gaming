@@ -1,6 +1,6 @@
 import { createRoute } from '@tanstack/react-router'
 import { rootRoute } from './__root'
-import Events from '@/pages/events'
+import Events from '@/pages/events/events'
 
 export const eventsRoute = createRoute({
   getParentRoute: () => rootRoute,

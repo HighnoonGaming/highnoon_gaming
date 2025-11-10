@@ -58,14 +58,19 @@ function Member() {
         />
       </div>
 
-      {/* TEXT */}
+      {/* NAME */}
       <div ref={textRef} className="text-center mt-8 max-w-3xl">
         <h1 className="text-4xl md:text-7xl uppercase font-bold tracking-tight">
           {member.name}
         </h1>
 
+        {/* ROLE */}
         <p className="text-lg mt-4">{member.role}</p>
 
+        {/* ALIASES */}
+        <p className="text-lg mt-4">Aliases: {member.aliases.join(', ')}</p>
+
+        {/* BIO */}
         <p className="mt-6 leading-relaxed md:text-lg">{member.description}</p>
 
         {/* FAVORITE GAMES */}

@@ -9,6 +9,8 @@ import { ourFocusData } from '@/data/our-focus'
 import { ourTeamData } from '@/data/our-team'
 import { sponsors } from '@/data/sponsors'
 import { useFlags } from '@/hooks/useFlag'
+import img11 from '@/assets/imgs/img11.jpg'
+import { updates } from '@/data/updates'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -197,18 +199,26 @@ function App() {
             </div>
 
             {/* VIDEO CONTENT */}
-            <div className="lg:w-1/2 h-full py-9 px-15">
-              <div className="h-full md:h-[350px] lg:h-full w-full flex justify-center items-center bg-cinnabar">
-                <button
-                  onClick={() => {
-                    setIsModalOpen(true)
-                    setSrc(
-                      'https://www.youtube.com/embed/wo-E8bJaUR4?si=EpyN_ngWmBGHvsqE',
-                    )
-                  }}
-                >
-                  <Play className="text-white w-16 h-16 m-10" />
-                </button>
+            <div
+              className="relative flex items-center justify-center lg:w-140 lg:h-140 h-full py-9 px-15 cursor-pointer group rounded-2xl overflow-hidden"
+              onClick={() => {
+                setIsModalOpen(true)
+                setSrc(
+                  'https://www.youtube.com/embed/wo-E8bJaUR4?si=EpyN_ngWmBGHvsqE',
+                )
+              }}
+            >
+              <div
+                className="absolute top-0 left-0 h-full md:h-[350px] lg:h-full w-full grayscale-100 group-hover:grayscale-0 transition duration-400"
+                style={{
+                  backgroundImage: `url(${img11})`,
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: 'cover',
+                }}
+              ></div>
+
+              <div>
+                <Play className="text-white w-16 h-16 relative z-20" />
               </div>
             </div>
           </section>
@@ -363,34 +373,47 @@ function App() {
             </p>
 
             <div className="mt-4 flex self-start">
-              <MainButton text="View More" link="" textSize="text-[14px]" />
+              <MainButton
+                text="View More"
+                textSize="text-[14px]"
+                link={`/updates`}
+              />
             </div>
           </div>
 
           {/* GRID */}
-          <div className="w-full mt-10 gap-4 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            {Array.from({ length: 6 }).map((_, index) => (
+          <div className="w-full mt-10 gap-10 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {updates.slice(0, 6).map((update, index) => (
               <div key={index} className="">
-                <div className="h-60 lg:h-80 lg:w-[85%] bg-cinnabar rounded-2xl"></div>
-
-                <div className="flex gap-5 mt-5 mb-3 items-center">
-                  <span className="uppercase text-[12px] bg-gray-500 py-1 px-2 text-white">
-                    News
-                  </span>
-
-                  <p className="uppercase text-[12px]">5 min read</p>
+                <div className="h-60 lg:h-80 lg:w-[85%] bg-cinnabar rounded-2xl overflow-hidden">
+                  <img
+                    src={update.img}
+                    alt=""
+                    className="h-full w-full object-cover"
+                  />
                 </div>
 
-                <h4 className="text-4xl font-bold line-clamp-3">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Dignissimos natus eum, excepturi autem aspernatur quo
-                  blanditiis expedita nobis in eaque reprehenderit quae eius
-                  repudiandae, rerum quasi magni laborum? Quisquam, tempore.
+                <div className="flex gap-5 mt-5 mb-3 items-center">
+                  <span className="uppercase text-[12px] bg-gray-500 rounded-md py-1 px-2 text-white">
+                    {update.tags}
+                  </span>
+
+                  <p className="uppercase text-[12px]">
+                    {update.length} min read
+                  </p>
+                </div>
+
+                <h4 className="text-xl font-light line-clamp-3">
+                  {update.text}
                 </h4>
 
-                <button className="mt-7 flex gap-2 items-center">
+                <Link
+                  to="/updates/$updateId"
+                  params={{ updateId: update.id }}
+                  className="mt-7 flex gap-2 items-center"
+                >
                   Read More <ChevronRight />
-                </button>
+                </Link>
               </div>
             ))}
           </div>

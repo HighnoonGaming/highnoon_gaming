@@ -8,6 +8,7 @@ export const ourTeamData = [
     img: nick,
     name: 'Nicholas Roach',
     role: 'Founder - Graphics Design',
+    aliases: ['Roach', 'Nick'],
     description:
       'Nicholas is the creative mind behind our brand visuals and content direction. With a background in digital design and visual storytelling, he brings a sharp eye for detail and a passion for creating designs that connect emotionally. When he’s not designing, he’s usually experimenting with new color palettes or helping refine the brand’s overall aesthetic.',
     favoriteGames: ['FIFA', 'Street Fighter', 'Valorant'],
@@ -38,6 +39,7 @@ export const ourTeamData = [
     img: rick,
     name: 'Ricardo Knight',
     role: 'Founder - Event Coordinator',
+    aliases: ['RickDTick', 'SmashGod'],
     description:
       'Ricardo is the heartbeat of our operations, ensuring every event runs smoothly from concept to completion. His background in event management and community building allows him to craft immersive experiences that bring people together. Beyond his coordination expertise, Ricardo is a competitive Super Smash Bros. player known for his sharp instincts and calm composure under pressure. A lifelong Manchester United supporter, he brings the same level of passion and teamwork from the pitch to every event he manages.',
     favoriteGames: ['FIFA', 'Super Smash Bros', 'Call Of Duty'],
@@ -68,6 +70,7 @@ export const ourTeamData = [
     img: mark,
     name: 'Mark Corbin',
     role: 'Web Developer - Support Specialist',
+    aliases: ['Kolizak', 'Scazze', 'Klaus'],
     description:
       'Mark is our technical problem-solver and the driving force behind our web systems. With experience in full-stack development and IT support, he ensures our platforms are fast, secure, and reliable. Outside of coding, Mark is an avid anime enthusiast and football fan who proudly supports FC Barcelona. His blend of creativity, focus, and analytical thinking helps bridge the gap between technology and user experience in every project.',
     favoriteGames: [

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { players } from '@/data/players'
 import SearchBar from '@/hooks/searchBar'
+import img9 from '@/assets/imgs/img9.jpg'
 
 function Players() {
   const [searchedPlayer, setSearchedPlayer] = useState('')
@@ -35,7 +36,7 @@ function Players() {
               <div className="p-5 absolute inset-0 rounded-xl overflow-hidden backface-hidden bg-darkGray border border-gray-700">
                 <div className="relative border-6 h-full rounded-xl overflow-hidden border-white">
                   <img
-                    src={player.img}
+                    src={img9}
                     alt="player image"
                     className="w-full h-full object-cover opacity-90"
                   />
