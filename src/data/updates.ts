@@ -1,11 +1,10 @@
-import { v4 as uuidv4 } from 'uuid'
 import teams from '@/assets/imgs/teams.png'
 import events from '@/assets/imgs/events.png'
 import news from '@/assets/imgs/news.png'
 
 export const updates = [
   {
-    id: uuidv4(),
+    id: 'barbados-blades-dynasty',
     img: teams,
     tags: ['team'],
     length: 6,
@@ -16,7 +15,7 @@ Teammates Tyrell “SteelFang” Morgan and Zane “ShadowFist” Mitchell both 
 Coach Andre “EdgeBaron” Holder credited the team’s success to a renewed focus on mental conditioning and matchup preparation. The Blades plan to enter two more regional qualifiers before the year ends, with eyes locked firmly on the International Tekken Invitational. Fans across the Caribbean are calling this roster the “Blade Dynasty,” and it’s hard to disagree.`,
   },
   {
-    id: uuidv4(),
+    id: 'caribbean-tech-alliance-partnership',
     img: news,
     tags: ['news'],
     length: 5,
@@ -27,7 +26,7 @@ This partnership represents a major milestone for the Caribbean gaming scene. Fo
 By investing in digital literacy and competitive gaming, we’re building a stronger foundation for the next generation of Caribbean innovators. Our shared goal is to make esports not just an entertainment avenue, but a sustainable industry for the future.`,
   },
   {
-    id: uuidv4(),
+    id: 'barbados-gaming-meetup',
     img: events,
     tags: ['events'],
     length: 4,
@@ -38,7 +37,7 @@ This year’s theme—*Level Up Barbados*—highlights the growth of the local e
 With hundreds of signups already in the first week of registration, the meetup is shaping up to be the most important gaming event of the Caribbean calendar year.`,
   },
   {
-    id: uuidv4(),
+    id: 'phoenix-rising-national-open',
     img: teams,
     tags: ['team'],
     length: 6,
@@ -49,7 +48,7 @@ According to head coach Natalie “AshWing” Clarke, Phoenix Rising’s recent 
 Phoenix Rising has their sights set on the Pan-Caribbean Championship next spring, where they plan to field competitors in Tekken, Street Fighter, and Dragon Ball FighterZ. If current momentum continues, they may be on track for their most successful season yet.`,
   },
   {
-    id: uuidv4(),
+    id: 'platform-v2-launch',
     img: news,
     tags: ['news'],
     length: 5,
@@ -60,7 +59,7 @@ The update also introduces an in-depth player profile system, where competitors 
 Our engineering team spent countless hours ensuring the platform performs well across devices and networks—especially for players connecting from rural areas. We’d like to extend our gratitude to the beta testers who provided feedback over the past few months. Their support helped shape this milestone release.`,
   },
   {
-    id: uuidv4(),
+    id: 'caribbean-esports-summit-2025',
     img: events,
     tags: ['events'],
     length: 5,
@@ -71,7 +70,7 @@ Teams such as Team Aeon, Nexus Elite, and Dark Tide are confirmed to attend, eac
 Organizers expect record-breaking attendance this year, with the summit positioned as the Caribbean’s premier competitive gaming event. Early-bird registration begins next week, and the schedule will be released soon after.`,
   },
   {
-    id: uuidv4(),
+    id: 'team-aeon-rising',
     img: teams,
     tags: ['team'],
     length: 6,
@@ -82,7 +81,7 @@ Coach Ariel “TimeWeaver” Gaskin praised the team’s work ethic, noting that
 With fresh sponsorship deals in the works and a growing social media following, Team Aeon’s trajectory looks promising. The team plans to expand its roster before the summer season, adding new players in Smash and Tekken to round out their competitive depth.`,
   },
   {
-    id: uuidv4(),
+    id: 'caribbean-startup-recognition',
     img: news,
     tags: ['news'],
     length: 4,
@@ -93,7 +92,7 @@ The nomination came after a review of over 200 regional initiatives, with judges
 It’s an exciting time to be part of the Caribbean gaming movement—and we’re just getting started.`,
   },
   {
-    id: uuidv4(),
+    id: 'velocityx-roster-rebuild',
     img: teams,
     tags: ['team'],
     length: 6,
@@ -104,7 +103,7 @@ Coach Jerome “Mist” Forde shared that the new team dynamic has brought renew
 With a tournament schedule stacked through March, VelocityX aims to climb the regional rankings quickly. Their disciplined training and aggressive playstyle make them one of the most exciting teams to watch heading into the next season.`,
   },
   {
-    id: uuidv4(),
+    id: 'dark-tide-bathsheba-invitational',
     img: teams,
     tags: ['team', 'events'],
     length: 7,

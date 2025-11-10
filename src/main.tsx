@@ -9,7 +9,6 @@ import { rootRoute } from './routes/__root.tsx'
 import { indexRoute } from './routes/index.tsx'
 import { aboutRoute } from './routes/about.tsx'
 import { contactRoute } from './routes/contact.tsx'
-import { eventsRoute } from './routes/events.tsx'
 import { galleryRoute } from './routes/gallery.tsx'
 import { leaderboardsRoute } from './routes/leaderboards.tsx'
 import { partnersRoute } from './routes/partners.tsx'
@@ -20,12 +19,16 @@ import { memberRoute } from './routes/members/$memberId.tsx'
 import { updatesRoute } from './routes/updates/updates.tsx'
 import { updateRoute } from './routes/updates/$updateId.tsx'
 import { updateIndexRoute } from './routes/updates/indexRoute.tsx'
+import { eventsRoute } from './routes/events/events.tsx'
+import { eventsIndexRoute } from './routes/events/indexRoute.tsx'
+import { eventRoute } from './routes/events/eventId.tsx'
+import { allEventsRoute } from './routes/events/all-events.tsx'
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
   aboutRoute,
   contactRoute,
-  eventsRoute,
+  eventsRoute.addChildren([eventRoute, eventsIndexRoute, allEventsRoute]),
   galleryRoute,
   leaderboardsRoute,
   partnersRoute,

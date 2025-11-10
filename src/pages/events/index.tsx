@@ -1,3 +1,4 @@
+import { Link } from '@tanstack/react-router'
 import { Calendar, MapPin } from 'lucide-react'
 import { events } from '@/data/events'
 
@@ -7,10 +8,10 @@ function Events() {
       <div className="flex justify-between items-end">
         <h1 className="font-bold text-5xl lg:text-7xl uppercase">Events</h1>
 
-        <button className="flex gap-2">
+        <Link to="/events/all-events" className="flex gap-2">
           <Calendar width={20} height={20} />
           <span className="text-sm font-bold mt-[0.19em]">All Events</span>
-        </button>
+        </Link>
       </div>
 
       {/* GRID */}
@@ -18,7 +19,12 @@ function Events() {
         {/* TOP LEFT GRID */}
         <div className="rounded-md h-80 lg:h-full overflow-hidden relative hover:cursor-pointer shadow-sm">
           {events.slice(0, 1).map((event, index) => (
-            <div key={index} className="">
+            <Link
+              key={index}
+              className=""
+              to="/events/$eventId"
+              params={{ eventId: event.id }}
+            >
               {/* IMAGE */}
               <div className="absolute top-0 left-0 h-full w-full overflow-hidden">
                 <img
@@ -48,16 +54,18 @@ function Events() {
                   </p>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
         {/* TOP RIGHT GRID */}
         <div className="grid md:grid-cols-2 lg:grid-rows-2 gap-7">
           {events.slice(1, 5).map((event, index) => (
-            <div
+            <Link
               key={index}
               className="h-45 rounded-md relative overflow-hidden hover:cursor-pointer shadow-sm"
+              to="/events/$eventId"
+              params={{ eventId: event.id }}
             >
               <div>
                 {/* IMAGE */}
@@ -92,16 +100,18 @@ function Events() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
         {/* BOTTOM LEFT GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
           {events.slice(5, 7).map((event, index) => (
-            <div
+            <Link
               key={index}
               className="rounded-md h-50 lg:h-auto relative overflow-hidden hover:cursor-pointer shadow-sm"
+              to="/events/$eventId"
+              params={{ eventId: event.id }}
             >
               <div>
                 {/* IMAGE */}
@@ -136,7 +146,7 @@ function Events() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
