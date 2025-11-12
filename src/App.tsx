@@ -307,18 +307,18 @@ function App() {
                       {member.name}
                     </h4>
 
-                    <div className="md:h-20 mt-5 lg:mt-7 flex flex-col md:flex-row gap-2 lg:gap-4">
+                    <div className="md:h-20 mt-5 lg:mt-7 flex gap-2 lg:gap-4">
                       <img
                         src={flags.barbados}
                         alt="flag of barbados"
-                        className="h-20 md:h-full w-full md:w-fit lg:h-15 object-cover"
+                        className="h-10 md:h-full w-10 md:w-fit lg:h-15 object-cover"
                       />
 
                       {member.id === '1477' && (
                         <img
                           src={flags.canada}
                           alt="flag of canada"
-                          className="h-20 md:h-full w-full md:w-fit lg:h-15 object-cover"
+                          className="h-10 md:h-full w-10 md:w-fit lg:h-15 object-cover"
                         />
                       )}
                     </div>
